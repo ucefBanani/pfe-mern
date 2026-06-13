@@ -25,8 +25,8 @@ const AdminDashboard = () => {
 
   return (
     <DashboardLayout>
-      <div className="max-w-5xl mx-auto">
-        <h2 className="text-2xl font-bold tracking-tight text-slate-100 mb-2">Platform Administration</h2>
+      <div className="w-full max-w-5xl mx-auto">
+        <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-100 mb-2">Platform Administration</h2>
         <p className="text-sm text-slate-400 mb-8">Review system-wide productivity metrics and platform velocity</p>
 
         {loading && (

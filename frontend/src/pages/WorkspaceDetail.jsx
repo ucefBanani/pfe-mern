@@ -373,8 +373,8 @@ const WorkspaceDetail = () => {
         )}
 
         {/* Search and Filters */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-4 rounded-xl border border-white/5 bg-slate-900/15">
-          <div className="relative grow max-w-sm">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 rounded-xl border border-white/5 bg-slate-900/15">
+          <div className="relative w-full sm:max-w-sm">
             <Search size={14} className="absolute left-3 top-3 text-slate-500" />
             <input 
               type="text" 
@@ -385,10 +385,10 @@ const WorkspaceDetail = () => {
             />
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex flex-wrap items-center gap-3">
             {/* Priority filter */}
             <div className="flex items-center gap-2">
-              <Filter size={12} className="text-slate-500" />
+              <Filter size={12} className="text-slate-500 shrink-0" />
               <select
                 value={priority}
                 onChange={(e) => setPriority(e.target.value)}
@@ -403,7 +403,7 @@ const WorkspaceDetail = () => {
 
             {/* Assignee filter */}
             <div className="flex items-center gap-2">
-              <User size={12} className="text-slate-500" />
+              <User size={12} className="text-slate-500 shrink-0" />
               <select
                 value={assigneeId}
                 onChange={(e) => setAssigneeId(e.target.value)}
@@ -419,15 +419,15 @@ const WorkspaceDetail = () => {
           </div>
         </div>
 
-        {/* Kanban Board Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+        {/* Kanban Board — horizontal scroll on mobile, grid on desktop */}
+        <div className="flex flex-row gap-4 overflow-x-auto pb-3 md:grid md:grid-cols-5 md:overflow-x-visible">
           {columns.map(col => {
             const colTasks = tasks.filter(t => t.status === col.id);
 
             return (
               <div 
                 key={col.id} 
-                className={`flex flex-col gap-3.5 p-3 rounded-xl border-t-2 ${col.color} bg-slate-900/10 min-h-[500px]`}
+                className={`flex flex-col gap-3.5 p-3 rounded-xl border-t-2 ${col.color} bg-slate-900/10 min-h-[480px] w-[280px] shrink-0 md:w-auto md:shrink`}
               >
                 {/* Column Title */}
                 <div className="flex items-center justify-between px-1.5 py-1">

@@ -8,8 +8,8 @@ const Profile = () => {
 
   return (
     <DashboardLayout>
-      <div className="max-w-xl mx-auto mt-8">
-        <h2 className="text-2xl font-bold tracking-tight text-slate-100 mb-2">My Profile</h2>
+      <div className="w-full max-w-xl mx-auto mt-4 sm:mt-8">
+        <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-100 mb-2">My Profile</h2>
         <p className="text-sm text-slate-400 mb-8">Review your account settings and credentials</p>
 
         <div className="rounded-2xl glass-panel border border-white/5 bg-slate-900/40 p-8 shadow-xl flex flex-col gap-6">

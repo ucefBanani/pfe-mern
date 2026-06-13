@@ -96,7 +96,7 @@ const Dashboard = () => {
 
   return (
     <DashboardLayout>
-      <div className="max-w-5xl mx-auto flex flex-col gap-8">
+      <div className="max-w-5xl mx-auto w-full flex flex-col gap-8">
         {/* Workspace Header */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-white/5">
           <div className="flex flex-col">
@@ -208,28 +208,30 @@ const Dashboard = () => {
         {/* Workspace Members list */}
         <div>
           <h3 className="text-sm font-bold uppercase tracking-wider text-slate-500 mb-4 px-1">Team Members</h3>
-          <div className="overflow-hidden rounded-xl border border-white/5">
-            <table className="w-full border-collapse text-left">
+          <div className="overflow-x-auto rounded-xl border border-white/5">
+            <table className="min-w-full border-collapse text-left">
               <thead>
                 <tr className="bg-slate-950/40 text-xs font-semibold text-slate-400">
-                  <th className="px-6 py-3">Member</th>
-                  <th className="px-6 py-3">Role</th>
-                  <th className="px-6 py-3">Joined</th>
+                  <th className="px-4 sm:px-6 py-3">Member</th>
+                  <th className="px-4 sm:px-6 py-3">Role</th>
+                  <th className="px-4 sm:px-6 py-3 whitespace-nowrap">Joined</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-white/5 bg-slate-900/15">
                 {members.map(member => (
                   <tr key={member.userId} className="text-xs text-slate-300">
-                    <td className="px-6 py-3.5 flex items-center gap-3">
-                      <div className="w-7 h-7 rounded-full bg-accentIndigo/20 flex items-center justify-center font-bold text-accentIndigo text-[11px] border border-accentIndigo/30">
-                        {member.name[0].toUpperCase()}
-                      </div>
-                      <div className="flex flex-col">
-                        <span className="font-medium text-slate-200">{member.name}</span>
-                        <span className="text-[10px] text-slate-500">{member.email}</span>
+                    <td className="px-4 sm:px-6 py-3.5">
+                      <div className="flex items-center gap-3">
+                        <div className="w-7 h-7 rounded-full bg-accentIndigo/20 flex items-center justify-center font-bold text-accentIndigo text-[11px] border border-accentIndigo/30 shrink-0">
+                          {member.name[0].toUpperCase()}
+                        </div>
+                        <div className="flex flex-col">
+                          <span className="font-medium text-slate-200">{member.name}</span>
+                          <span className="text-[10px] text-slate-500">{member.email}</span>
+                        </div>
                       </div>
                     </td>
-                    <td className="px-6 py-3.5">
+                    <td className="px-4 sm:px-6 py-3.5">
                       <span className={`inline-flex px-2 py-0.5 rounded-full text-[10px] font-medium ${
                         member.role === 'Admin' 
                           ? 'bg-accentPurple/15 text-accentPurple border border-accentPurple/20' 
@@ -238,7 +240,7 @@ const Dashboard = () => {
                         {member.role}
                       </span>
                     </td>
-                    <td className="px-6 py-3.5 text-slate-500">
+                    <td className="px-4 sm:px-6 py-3.5 text-slate-500 whitespace-nowrap">
                       {new Date(member.joinedAt).toLocaleDateString()}
                     </td>
                   </tr>

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Bell, User, Check, X, ShieldAlert } from 'lucide-react';
+import { Bell, User, Check, X, Menu } from 'lucide-react';
 import { useNotifications } from '../../contexts/NotificationContext';
 import { useAuth } from '../../contexts/AuthContext';
 
-const Navbar = () => {
+const Navbar = ({ onMenuToggle }) => {
   const { user } = useAuth();
   const { notifications, unreadCount, toast, markAsRead, clearToast } = useNotifications();
   const [isOpen, setIsOpen] = useState(false);
@@ -19,33 +19,44 @@ const Navbar = () => {
   }, [toast]);
 
   return (
-    <nav className="h-16 border-b border-white/5 bg-[#090e18] px-8 flex items-center justify-between relative select-none">
+    <nav className="h-16 border-b border-white/5 bg-[#090e18] px-4 sm:px-6 md:px-8 flex items-center justify-between relative select-none shrink-0">
       {/* Toast Notification Container */}
       {toast && (
-        <div className="fixed top-4 right-4 z-[999] flex items-center gap-3 max-w-sm p-4 rounded-xl shadow-2xl bg-slate-900 border border-white/10 glass-panel animate-in slide-in-from-top-4 duration-300">
+        <div className="fixed top-4 right-4 z-[999] flex items-center gap-3 max-w-xs sm:max-w-sm p-4 rounded-xl shadow-2xl bg-slate-900 border border-white/10 glass-panel animate-in slide-in-from-top-4 duration-300">
           <div className="w-2.5 h-2.5 rounded-full bg-accentPurple shrink-0 animate-ping"></div>
-          <p className="text-xs font-medium text-slate-200">{toast.message}</p>
+          <p className="text-xs font-medium text-slate-200 line-clamp-2">{toast.message}</p>
           <button 
             onClick={clearToast} 
-            className="p-1 rounded text-slate-500 hover:text-slate-200 hover:bg-white/5 transition-all ml-auto"
+            className="p-1 rounded text-slate-500 hover:text-slate-200 hover:bg-white/5 transition-all ml-auto shrink-0"
           >
             <X size={12} />
           </button>
         </div>
       )}
 
-      {/* Page Title Context */}
-      <div>
-        <h2 className="text-base font-semibold text-slate-200">Workspace Dashboard</h2>
+      {/* Left: Hamburger (mobile/tablet) + Title */}
+      <div className="flex items-center gap-3">
+        {/* Hamburger menu button — only visible on mobile/tablet */}
+        <button
+          id="sidebar-toggle-btn"
+          onClick={onMenuToggle}
+          className="md:hidden p-2 rounded-xl text-slate-400 hover:text-slate-200 hover:bg-white/5 transition-all"
+          aria-label="Toggle sidebar"
+        >
+          <Menu size={20} />
+        </button>
+
+        <h2 className="text-sm sm:text-base font-semibold text-slate-200 truncate">Workspace Dashboard</h2>
       </div>
 
-      {/* Actions */}
-      <div className="flex items-center gap-6">
+      {/* Right: Actions */}
+      <div className="flex items-center gap-3 sm:gap-6">
         {/* Notifications Dropdown */}
         <div className="relative">
           <button 
             onClick={() => setIsOpen(!isOpen)}
             className="p-2 rounded-xl text-slate-400 hover:text-slate-200 hover:bg-white/5 transition-all relative"
+            aria-label="Notifications"
           >
             <Bell size={20} />
             {unreadCount > 0 && (
@@ -62,7 +73,7 @@ const Navbar = () => {
                 className="fixed inset-0 z-10" 
                 onClick={() => setIsOpen(false)}
               ></div>
-              <div className="absolute right-0 mt-2 w-80 max-h-96 overflow-y-auto rounded-2xl glass-panel shadow-2xl z-20 border border-white/10 py-2 animate-in fade-in slide-in-from-top-2 duration-200">
+              <div className="absolute right-0 mt-2 w-72 sm:w-80 max-h-96 overflow-y-auto rounded-2xl glass-panel shadow-2xl z-20 border border-white/10 py-2 animate-in fade-in slide-in-from-top-2 duration-200">
                 <div className="px-4 py-2 border-b border-white/5 flex items-center justify-between">
                   <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Notifications</span>
                   <span className="text-[10px] text-slate-500 font-medium">{unreadCount} Unread</span>
@@ -102,11 +113,11 @@ const Navbar = () => {
         </div>
 
         {/* User Info */}
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-full bg-accentIndigo/30 flex items-center justify-center font-bold text-accentIndigo text-sm border border-accentIndigo/45">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <div className="w-8 h-8 rounded-full bg-accentIndigo/30 flex items-center justify-center font-bold text-accentIndigo text-sm border border-accentIndigo/45 shrink-0">
             {user?.name ? user.name[0].toUpperCase() : 'U'}
           </div>
-          <span className="text-xs font-medium text-slate-300 hidden md:block">{user?.name}</span>
+          <span className="text-xs font-medium text-slate-300 hidden lg:block">{user?.name}</span>
         </div>
       </div>
     </nav>
