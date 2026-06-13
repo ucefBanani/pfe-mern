@@ -11,6 +11,8 @@ import WorkspaceDetail from '../pages/WorkspaceDetail';
 import Profile from '../pages/Profile';
 import AdminDashboard from '../pages/AdminDashboard';
 
+import WorkspaceRedirect from '../components/auth/WorkspaceRedirect';
+
 const AppRoutes = () => {
   return (
     <Routes>
@@ -20,6 +22,16 @@ const AppRoutes = () => {
       <Route path="/verify-email" element={<VerifyEmail />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/reset-password" element={<ResetPasswordConfirm />} />
+
+      {/* Protected Root redirector */}
+      <Route 
+        path="/" 
+        element={
+          <ProtectedRoute>
+            <WorkspaceRedirect />
+          </ProtectedRoute>
+        } 
+      />
 
       {/* Protected Workspace routes */}
       <Route 
