@@ -54,9 +54,9 @@ The project has been planned over a 4-week Sprint sequence to facilitate collabo
 
 | Developer Role | Module Assignments | Primary Files & Assets |
 | :--- | :--- | :--- |
-| **Developer 1 (Auth & User)** | Auth credentials registration, login validation, JWT tokens verify, profile views, forgot pass recovery, role checks. | `RegisterUser.js`, `VerifyEmail.js`, `authRoutes.js`, `Login.jsx`, `Register.jsx`, `Profile.jsx` |
-| **Developer 2 (Tasks Board)** | Workspace creation, project setups, Kanban column list CRUD, assignment maps, priorities, labels, and dashboard stats. | `WorkspaceDetail.jsx`, `TaskRepository.js`, `taskRoutes.js`, `ProjectModel.js`, `Dashboard.jsx` |
-| **Developer 3 (Collab & AI)** | Real-time streams via WebSockets, comments logs, toast feeds, OpenAI priority estimations, summaries and report cards. | `socketHandler.js`, `OpenAIService.js`, `CommentModel.js`, `NotificationContext.jsx` |
+| **Youssef (Auth & User)** | Auth credentials registration, login validation, JWT tokens verify, profile views, forgot pass recovery, role checks. | `RegisterUser.js`, `VerifyEmail.js`, `authRoutes.js`, `Login.jsx`, `Register.jsx`, `Profile.jsx` |
+| **Abdelkarim (Tasks Board)** | Workspace creation, project setups, Kanban column list CRUD, assignment maps, priorities, labels, and dashboard stats. | `WorkspaceDetail.jsx`, `TaskRepository.js`, `taskRoutes.js`, `ProjectModel.js`, `Dashboard.jsx` |
+| **Tarik (Collab & AI)** | Real-time streams via WebSockets, comments logs, toast feeds, OpenAI priority estimations, summaries and report cards. | `socketHandler.js`, `OpenAIService.js`, `CommentModel.js`, `NotificationContext.jsx` |
 
 ### 4-Week Sprint Schedule
 1. **Week 1 (Setup & Auth Foundations):** Scaffolding core folder skeletons, MongoDB connections, JWT auth, nodemailer triggers, and UI auth screen layouts.
@@ -74,9 +74,9 @@ The team adopts GitFlow branch naming conventions to manage parallel coding:
   - `main`: Release-ready codebase.
   - `develop`: Shared integration branch for Sprints.
 - **Feature Branches (Feature-driven naming):**
-  - Developer 1: `feat/user-auth-dev1`
-  - Developer 2: `feat/project-tasks-dev2`
-  - Developer 3: `feat/collab-ai-dev3`
+  - Youssef: `feat/user-auth-youssef`
+  - Abdelkarim: `feat/project-tasks-abdelkarim`
+  - Tarik: `feat/collab-ai-tarik`
 - **Workflow:** Developers write code on feature branches, push changes, and submit Pull Requests (PRs) targeting `develop`. Sprints are integrated into `develop` and tag-released into `main` after checks.
 
 ---
@@ -176,7 +176,7 @@ docker compose up -d
 
 The database seed script generates four pre-configured accounts (password: `password123`):
 
-1. **Developer 1 (Auth):** `dev1@taskflowai.com`
-2. **Developer 2 (Tasks):** `dev2@taskflowai.com`
-3. **Developer 3 (AI/Collab):** `dev3@taskflowai.com`
+1. **Youssef (Auth):** `dev1@taskflowai.com`
+2. **Abdelkarim (Tasks):** `dev2@taskflowai.com`
+3. **Tarik (AI/Collab):** `dev3@taskflowai.com`
 4. **Admin User (Metrics):** `admin@taskflowai.com`
